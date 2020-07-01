@@ -1,7 +1,7 @@
 # 面向包设计
 原文 https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html
 
-非直译
+非直译，有取舍
 ## 序
 This post is part of a series of posts designed to make you think about your own design philosophy on different topics. If you haven’t read these posts yet, please do so first:
 Develop Your Design Philosophy
