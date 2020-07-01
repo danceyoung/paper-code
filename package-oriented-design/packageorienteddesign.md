@@ -28,4 +28,6 @@ I believe that every company should establish a single Kit project and then mult
 Kit Projects
 Think of the Kit project as a company’s standard library, so there should only be one. The packages that belong to the Kit project need to be designed with the highest levels of portability in mind. These packages should be usable across multiple Application projects and provide a very specific but foundational domain of functionality. To this end, the Kit project is not allowed to have a vendor folder. If any of packages are dependent on 3rd party packages, they must always build against the latest version of those dependences.
 
-考虑到工具包作为公司的一个标准类库，所以应该仅有一个。里面的所有包都需要设计为高级的可移植性。这些包可以在任何一个项目中都能使用，并且提供的都是很实用、具体的但又非常基础的功能。为了达到这样的目标，工具包项目不能有一个依赖三方的vendor。因为如果有包依赖三方包，那就得不断的构建编译随着那些三方包的更新。
+考虑到工具包作为公司的一个标准类库，所以应该仅有一个。里面的所有包都需要设计为高级的可移植性。这些包可以在任何一个项目中都能使用，并且提供的都是很实用、具体的但又非常基础的功能。为了达到这样的目标，工具包项目不能有一个包依赖三方的vendor。因为如果有包依赖三方包，那就得不断的构建编译随着那些三方包的更新。
+
+同时也不建议把工具包项目的部分包直接复制到你的应用项目中，因为这样本身增加了你对这些包管理、更新的工作，当然你如果真这样做也没毛病。
