@@ -9,7 +9,7 @@ Design Philosophy On Packaging
 
 这篇文章仅仅是关于面向包设计理念中的一篇。如果你还没有看过下面这些内容，请先看看，有助于你理解本篇文章内容。
 
-## 前言
+## 前
 Introduction
 Package Oriented Design allows a developer to identify where a package belongs inside a Go project and the design guidelines the package must respect. It defines what a Go project is and how a Go project is structured. Finally, it improves communication between team members and promotes clean package design and project architecture that is discussable.
 Package oriented design is NOT bound to a single project structure, but states that a project structure is paramount to applying guidelines for good package design. Moving forward, I will present one possible project structure and the guidelines to follow based on the design philosophies presented earlier.
