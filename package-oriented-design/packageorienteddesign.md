@@ -87,8 +87,6 @@ github.com/servi-io/api
 
 #### vendor/
 
-Good documentation for the `vendor/` folder can be found in this Gopher Academy [post](https://blog.gopheracademy.com/advent-2015/vendor-folder) by Daniel Theophanes. For the purpose of this post, all the source code for 3rd party packages need to be vendored (or copied) into the `vendor/` folder. This includes packages that will be used from the company `Kit` project. Consider packages from the `Kit` project as 3rd party packages.
+~~~~vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早的依赖包的管理方式。目前大都用的go mod的依赖包管理，相对vendor，能指定版本，并且你不用特意手动下载更新依赖包，通过正常的go build, go run命令会自动处理。这样会减少项目本身的容量大小。
 
-vendor 文件夹包含了所有依赖的三方的源代码，它是 go 项目最早的依赖包的管理方式。目前大都用的 go mod 的依赖包管理，相对 vendor，能指定版本，并且你不用特意手动下载更新依赖包，通过正常的 go build, go run 命令会自动处理。这样会减少项目本身的容量大小。
-
-> 这里不过多介绍 go mod 的用法和特性。
+> 这里不过多介绍go mod的用法和特性。
