@@ -52,6 +52,7 @@ A typical Application project might look like this:
 一个典型的应用项目结构应该是这样的：
 
 ```
+
 github.com/servi-io/api
 ├── cmd/
 │   ├── servi/
@@ -83,3 +84,9 @@ github.com/servi-io/api
     │   ├── prometheus/
     └── golang.org/
 ```
+
+#### vendor/
+
+~~~~vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早的依赖包的管理方式。目前大都用的go mod的依赖包管理，相对vendor，能指定版本，并且你不用特意手动下载更新依赖包，通过正常的go build, go run命令会自动处理。这样会减少项目本身的容量大小。
+
+> 这里不过多介绍go mod的用法和特性。
