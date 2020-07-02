@@ -93,6 +93,9 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 
 #### cmd/
 
-All the programs this project owns belongs inside the `cmd/` folder. The folders under `cmd/` are always named for each program that will be built. Use the letter `d` at the end of a program folder to denote it as a daemon. Each folder has a matching source code file that contains the `main` package.
+All the programs this project owns belongs inside the `cmd/` folder. The folders under `cmd/` are always named for each program that will be built. Use the letter `d` at the end of a program folder to denote it as a daemon. Each folder has a matching source ~~~~code file that contains the `main` package.
 
-项目中的所有的程序都需要放在`cmd/` 文件夹里。每个程序对应一个文件夹，文件夹的名称应该以程序的名称命名。一般在名称后面加上`d` 代表该程序是一个守护进程运行。每个文件夹必须有一个main包的源文件。
+项目中的所有的程序都需要放在`cmd/` 文件夹里。每个程序对应一个文件夹，文件夹的名称应该以程序的名称命名。一般在名称后面加上`d` 代表该程序是一个守护进程运行。每个文件夹必须有一个`main`包的源文件。
+
+>* 比如一个项目包含线上业务服务bizserver（提供restful API）、后台管理服务adminserver(供内部人员使用）和一个定时器timer（定时更新数据的状态）三个程序。`cmd`文件夹应该有三个对应的文件夹，并且每个文件夹下面都有一个`main`包的源文件，至于名称可以直接用main，也可以对应文件夹的名称。
+>* 每个文件夹下的源文件里的代码和业务逻辑基本没任何关系。比如rest ful的bizserver，里面仅包含router的配置和相关的handler。
