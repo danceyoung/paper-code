@@ -50,3 +50,36 @@ Each Application project contains three root level folders. These are cmd/, inte
 A typical Application project might look like this:
 
 一个典型的应用项目结构应该是这样的：
+
+```
+github.com/servi-io/api
+├── cmd/
+│   ├── servi/
+│   │   ├── cmdupdate/
+│   │   ├── cmdquery/
+│   │   └── servi.go
+│   └── servid/
+│       ├── routes/
+│       │   └── handlers/
+│       ├── tests/
+│       └── servid.go
+├── internal/
+│   ├── attachments/
+│   ├── locations/
+│   ├── orders/
+│   │   ├── customers/
+│   │   ├── items/
+│   │   ├── tags/
+│   │   └── orders.go
+│   ├── registrations/
+│   └── platform/
+│       ├── crypto/
+│       ├── mongo/
+│       └── json/
+└── vendor/
+    ├── github.com/
+    │   ├── ardanlabs/
+    │   ├── golang/
+    │   ├── prometheus/
+    └── golang.org/
+```
