@@ -1,5 +1,3 @@
-
-
 ---
 
 ## Rest ful API
@@ -26,7 +24,7 @@
 | name | 是 | string | 活动名称 |
 | start_date | 是 | string | 开始日期 |
 | expired_on | 是 | string | 结束日期 |
-| member_count_limint | 是 | int | 报名人数上限 |
+| member_count_limit | 是 | int | 报名人数上限 |
 | address | 是 | string | 活动地址 |
 | desc | 是 | string | 活动描述 |
 
