@@ -7,6 +7,11 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// How errors are handled:
+//NOT allowed to panic an application.
+//NOT allowed to wrap errors.
+//Return only root cause error values.
+
 var db *sql.DB
 
 func NewDB() *sql.DB {
@@ -16,7 +21,8 @@ func NewDB() *sql.DB {
 func init() {
 	tempdb, err := sql.Open("mysql", "")
 	if err != nil {
-		panic(err)
+		log.Println(err)
+		return
 	}
 
 	tempdb.SetMaxIdleConns(200)
