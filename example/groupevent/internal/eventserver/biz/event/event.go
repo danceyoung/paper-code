@@ -16,19 +16,28 @@ import (
 
 //Can not recover from panics
 
-func NewAEvent(name, startDate, expiredOn string, countLimit int, address, desc string) error {
-	if _, err := time.Parse("2006-01-02", startDate); err != nil {
+type Event struct {
+	Name             string `json:"name"`
+	StartDate        string `json:"start_date"`
+	ExpiredOn        string `json:"expired_on"`
+	MemberCountLimit int    `json:"member_count_limit"`
+	Address          string `json:"address"`
+	Desc             string `json:"desc"`
+}
+
+func NewAEvent(ev Event) error {
+	if _, err := time.Parse("2006-01-02", ev.StartDate); err != nil {
 		return errors.New("date param is invalid")
 	}
-	if _, err := time.Parse("2006-01-02", expiredOn); err != nil {
+	if _, err := time.Parse("2006-01-02", ev.ExpiredOn); err != nil {
 		return errors.New("date param is invalid")
 	}
 
-	if len(name) == 0 || len(address) == 0 || len(desc) == 0 || countLimit == 0 {
+	if len(ev.Name) == 0 || len(ev.Address) == 0 || len(ev.Desc) == 0 || ev.MemberCountLimit == 0 {
 		return errors.New("params are not enough")
 	}
 
-	if err := data.NewAEvent(name, startDate, expiredOn, countLimit, address, desc); err != nil {
+	if err := data.NewAEvent(ev.Name, ev.StartDate, ev.ExpiredOn, ev.MemberCountLimit, ev.Address, ev.Desc); err != nil {
 		return errors.New("a error was accurred when new a event")
 	}
 
