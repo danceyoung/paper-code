@@ -27,7 +27,7 @@ func (eventH *EventHandler) NewAEvent(rw http.ResponseWriter, req *http.Request)
 	if err != nil {
 		panic(err)
 	}
-	var dest event.Event
+	var dest event.EventM
 	err = json.Unmarshal(bodybytes, &dest)
 	if err != nil {
 		panic(err)

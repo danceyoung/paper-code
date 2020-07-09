@@ -3,6 +3,7 @@ package event
 import (
 	"errors"
 	"paper-code/example/groupevent/internal/eventserver/data"
+
 	"time"
 )
 
@@ -16,7 +17,7 @@ import (
 
 //Can not recover from panics
 
-type Event struct {
+type EventM struct {
 	Name             string `json:"name"`
 	StartDate        string `json:"start_date"`
 	ExpiredOn        string `json:"expired_on"`
@@ -25,7 +26,7 @@ type Event struct {
 	Desc             string `json:"desc"`
 }
 
-func NewAEvent(ev Event) error {
+func NewAEvent(ev EventM) error {
 	if _, err := time.Parse("2006-01-02", ev.StartDate); err != nil {
 		return errors.New("date param is invalid")
 	}
@@ -48,11 +49,11 @@ func JoinAEvent(eventId string, name, gm, studentId, college, level, profession 
 	if len(eventId) == 0 || len(studentId) == 0 {
 		return errors.New("params are not enough")
 	}
-	if err := data.JoinAEvent(eventId, name, gm, studentId, college, level, profession); err != nil {
-		return errors.New("a error was accurred when join a event")
-	}
+	// if err := data.JoinAEvent(eventId, name, gm, studentId, college, level, profession); err != nil {
+	// 	return errors.New("a error was accurred when join a event")
+	// }
 	return nil
 }
 func EventsBy(studentId string) {
-	data.EventsBy(studentId)
+	// data.EventsBy(studentId)
 }
