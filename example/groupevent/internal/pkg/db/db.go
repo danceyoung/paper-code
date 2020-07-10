@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"log"
 
+	"paper-code/example/groupevent/internal/pkg/cfg"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -19,7 +21,7 @@ func NewDB() *sql.DB {
 }
 
 func init() {
-	tempdb, err := sql.Open("mysql", "")
+	tempdb, err := sql.Open("mysql", cfg.String("mysql"))
 	if err != nil {
 		log.Println(err)
 		return
