@@ -2,7 +2,15 @@
 
 
 ## 序
-本篇内容主要讲解golang项目的面向包设计准则和基础的架构分层。信息来自原文 [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html), [Github: golang standard project layout](https://github.com/golang-standards/project-layout), [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10)) 内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子[group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)来解释本篇内容。
+本篇内容主要讲解golang项目的面向包设计准则和基础的架构分层。
+
+信息来自原文
+*  [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html), 
+* [Github: golang standard project layout](https://github.com/golang-standards/project-layout), 
+* [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10)) 
+
+内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子来解释本篇内容。
+* [group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)
 
 当然你也可以直接阅读英文原文。
 
