@@ -10,7 +10,7 @@
 * [Github: golang standard project layout](https://github.com/golang-standards/project-layout),
 * [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10))
 
-内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子来解释本篇内容。
+内容进行ETL及结合个人的Experiences, Opinions，并附有一个真实的例子来解释本篇内容。
 
 * [group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)
 
