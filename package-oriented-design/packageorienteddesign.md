@@ -1,6 +1,8 @@
 # 面向包设计
 
-原文 [https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html)
+原文 [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html)
+原文  [Github: golang standard project layout](https://github.com/golang-standards/project-layout)
+原文 [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10))
 
 非直译，有取舍
 
