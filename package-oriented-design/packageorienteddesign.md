@@ -1,20 +1,27 @@
 # 面向包的设计及架构分层
 
-
 ## 序
+
 本篇内容主要讲解golang项目的面向包设计准则和基础的架构分层。
 
 信息来自原文
-*  [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html), 
-* [Github: golang standard project layout](https://github.com/golang-standards/project-layout), 
-* [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10)) 
+
+* [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html),
+* [Github: golang standard project layout](https://github.com/golang-standards/project-layout),
+* [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10))
 
 内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子来解释本篇内容。
+
 * [group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)
 
 当然你也可以直接阅读英文原文。
 
+当然高手如云，只是懒得写罢了。
+
+百年太久，只争朝夕，不负韶华，不枉少年，来日怎方长。
+
 ## 前
+
 面向包设计的理念让开发者在一个 go 项目中确定包的组织和必须要遵守的设计准则。它定义了一个 go 项目应该是什么样的及怎么架构和分层一个 go 项目。它最终的目的是为了提高项目的易懂性、整洁和可讨论性，便于团队成员沟通。
 
 面向包设计不局限于项目本身的结构，更多为了表达一个实现合理面向包设计的项目结构是多么的重要。下面我将介绍一个面向包设计的项目和之前提到过的相关的准则。
@@ -83,6 +90,7 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 每个文件夹必须有一个`main`包的源文件，该源文件的名称最好命名成可执行程序的名称，当然也可以保留main文件名。在此会导入和调用`internal/`和`pkg/`等其他文件夹中相关的代码。
 
 示例
+
 ```
 ├── cmd/
 │   ├── eventtimer/
@@ -95,77 +103,88 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 │       │   └── router.go
 │       └── main.go
 ```
+
 > 该项目包含线上业务服务eventserver（提供restful API）、定时器eventtimer（定时更新数据的状态）二个应用程序。`cmd`文件夹对应有2个文件夹，并且每个文件夹下面都有一个`main`包的源文件，至于名称可以直接用main，也可以对应文件夹的名称。
->  每个文件夹下的源文件里的代码和业务逻辑基本没任何关系。比如rest ful的eventserver，里面仅包含router的配置和相关的handler。
+> 每个文件夹下的源文件里的代码和业务逻辑基本没任何关系。比如rest ful的eventserver，里面仅包含router的配置和相关的handler。
 
 #### internal/
+
 需要被项目内部的程序导入的包，都应该放在`internal`文件夹下。该文件夹下的所有包及相应文件都有一个项目保护级别，即其他项目是不能导入这些包的，仅仅是该项目内部使用。
+
 #### internal/platform/
+
 这些包是比较基础但又提供了很特殊的功能，比如数据库、日志、用户验证等功能。
+
 ### 验证包的设计
+
 面向包设计的准则可以验证项目中包设计的是否合理，下面这些步骤可以帮你发现包设计的问题。
+
 #### 包的位置
 
 * `kit`
-被不同应用项目导入的基础包
-
+  被不同应用项目导入的基础包
 * `cmd`
-支持编译不同二进制程序的包，比如Restful路由程序，需要相关router, handler包和main入口包。
-
+  支持编译不同二进制程序的包，比如Restful路由程序，需要相关router, handler包和main入口包。
 * `internal`
-项目内部使用的包，包括crud, service(facada)和业务逻辑的包。
+  项目内部使用的包，包括crud, service(facada)和业务逻辑的包。
 * `internal/platform`
-为本项目内部使用的基础包，包括数据库、认证和序列化等操作的包。
+  为本项目内部使用的基础包，包括数据库、认证和序列化等操作的包。
+
 #### 依赖包导入
+
 * 根据业务合理设计包的粒度。
 * 在一个包中导入另一个包中的类型，是不合适的。
 * 在同一个目录级别下的包互相导入，是不合适的。
 * 如果真有上面的需求
-1、请检查你对领域知识的理解、领域模型设计和包的设计。如果不是架构分层的设计，不同的包是相互独立的单元。
-2、如果情非得已，那么将被导入的包移动到你的包里面。
+
+1. 请检查你对领域知识的理解、领域模型设计和包的设计。如果不是架构分层的设计，不同的包是相互独立的单元。
+2. 如果情非得已，那么将被导入的包移动到你的包里面。
+
 * `internal/`中的包不能导入`cmd/`中的包。
 * `internal/platform/`中的包不能导入`cmd/`, `internal/`中的包。
+
 #### 项目层的策略
+
 比如给restful api的handler写中间件、定时更新等策略。
 
 在`Kit`, `internal/platform/`中是不允许写这些策略的，也不允许日志的打印。在这里数据库的配置、日志文件的配置应该和运行时环境的改变是低耦合的，可以通过环境变量来修改配置。
 
 在`cmd/`, `internal/`是可以写中间件和定时器等。
+
 #### 数据的发送和接受
+
 * 在语意上要确定好一个类型发送和接受的方式，即值类型还是引用类型。
-比如golang的http包中的Request结构体，在http中是以引用类型使用的。可以查看http包下面的server源码，里面包含了各种用法，如果你想自己写路由，server的几个函数和类型是必须要用的，这里不过多介绍。
+  比如golang的http包中的Request结构体，在http中是以引用类型使用的。可以查看http包下面的server源码，里面包含了各种用法，如果你想自己写路由，server的几个函数和类型是必须要用的，这里不过多介绍。
 * 如果你用一个接口类型的变量接收一个返回值，则更多的目的应该是调用接口的方法即行为，而不是值本身。如果不是这样，请直接用具体的类型。
 
 #### 错误处理
+
 错误处理包括错误信息的日志输出，分析和解决错误，并且保证程序能恢复如果发生了错误。
+
 * `Kit`
-<br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>  
-不允许再次包装错误信息，原本原样的把系统错误或框架的错误返回即可。<br/>  <br/>  
+  <br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>不允许再次包装错误信息，原本原样的把系统错误或框架的错误返回即可。<br/>  <br/>
 * `cmd/`
-<br/>  <br/>  允许使用panic终止程序或抛出错误。<br/>  
-如果有错误发生且不处理，可以根据此时的业务或逻辑上下午包装一下错误，让更上层的处理错误的函数能知道是哪里抛出的错误。<br/>  
-当然大多数的错误都应该在这里处理。<br/>  <br/>  
+  <br/>  <br/>  允许使用panic终止程序或抛出错误。<br/>如果有错误发生且不处理，可以根据此时的业务或逻辑上下午包装一下错误，让更上层的处理错误的函数能知道是哪里抛出的错误。<br/>当然大多数的错误都应该在这里处理。<br/>  <br/>
 * `internal/`
-<br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>  
-如果有错误发生且不处理，可以根据此时的业务或逻辑上下午包装一下错误，让更上层的处理错误的函数能知道是哪里抛出的错误。<br/>  
-当然大多数的错误都应该在这里处理。<br/>  <br/>  
+  <br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>如果有错误发生且不处理，可以根据此时的业务或逻辑上下午包装一下错误，让更上层的处理错误的函数能知道是哪里抛出的错误。<br/>当然大多数的错误都应该在这里处理。<br/>  <br/>
 * `internal/platform/`
-<br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>  
-不允许再次包装错误信息，原本原样的把系统错误或框架的错误返回即可。<br/>  
+  <br/>  <br/>  不允许使用panic终止程序或抛出错误。<br/>
+  不允许再次包装错误信息，原本原样的把系统错误或框架的错误返回即可。<br/>
+
 #### 测试
+
 * `cmd/`
-允许使用第三方的测试包。
-可以独立创建一个test包来管理单元测试的文件。
-这里更多是集成测试而不是单元测试。
+  允许使用第三方的测试包。
+  可以独立创建一个test包来管理单元测试的文件。
+  这里更多是集成测试而不是单元测试。
 * `kit/`, `internal/`, `internal/platform/`
-强烈推荐使用golang的testing包。
-test文件可以直接创建在对应包下面。
-这里更多是单元测试而不是集成测试。
+  强烈推荐使用golang的testing包。
+  test文件可以直接创建在对应包下面。
+  这里更多是单元测试而不是集成测试。
 
 #### 捕获错误
+
 * `cmd/`
-可以捕获任何错误，且保证程序100%能恢复。
+  可以捕获任何错误，且保证程序100%能恢复。
 * `kit/`, `internal/`, `internal/platform/`
-不能捕获错误，除非发生错误时，有对应的线程可以处理，或通知到程序。
-
-
+  不能捕获错误，除非发生错误时，有对应的线程可以处理，或通知到程序。
