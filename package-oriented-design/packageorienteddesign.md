@@ -1,4 +1,4 @@
-# 面向包设计
+# 面向包的设计及架构分层
 
 原文 [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html)
 原文  [Github: golang standard project layout](https://github.com/golang-standards/project-layout)
