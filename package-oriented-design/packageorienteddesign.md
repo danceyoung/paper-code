@@ -1,13 +1,10 @@
 # 面向包的设计及架构分层
 
-原文 [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html)
-原文  [Github: golang standard project layout](https://github.com/golang-standards/project-layout)
-原文 [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10))
-
-非直译，有取舍
 
 ## 序
-这篇文章仅仅是关于面向包设计理念中的一篇。如果你还没有看过下面这些内容，请先看看，有助于你理解本篇文章内容。
+本篇内容主要讲解golang项目的面向包设计准则和基础的架构分层。信息来自原文 [Ardan Labs: Package-Oriented-Design](https://www.ardanlabs.com/blog/2017/02/package-oriented-design.html), [Github: golang standard project layout](https://github.com/golang-standards/project-layout), [Microsoft: Design Fundamentals - Layout Application Guideline](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109(v=pandp.10)) 内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子[group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)来解释本篇内容。
+
+当然你也可以直接阅读英文原文。
 
 ## 前
 面向包设计的理念让开发者在一个 go 项目中确定包的组织和必须要遵守的设计准则。它定义了一个 go 项目应该是什么样的及怎么架构和分层一个 go 项目。它最终的目的是为了提高项目的易懂性、整洁和可讨论性，便于团队成员沟通。
