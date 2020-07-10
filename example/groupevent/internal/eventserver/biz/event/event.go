@@ -39,7 +39,7 @@ func NewAEvent(ev EventM) error {
 	}
 
 	if err := data.NewAEvent(ev.Name, ev.StartDate, ev.ExpiredOn, ev.MemberCountLimit, ev.Address, ev.Desc); err != nil {
-		return errors.New("a error was accurred when new a event")
+		return errors.New("a error was accurred when new a event. " + err.Error())
 	}
 
 	return nil
