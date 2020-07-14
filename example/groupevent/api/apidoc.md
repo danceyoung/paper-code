@@ -59,7 +59,8 @@
 
 **请求URL：**
 
-- `/event/:id/join`
+- `/event/join?event-id=111`
+- 更符合rest ful规则的应该是/event/111/join,
 
 **请求方式：**
 
@@ -86,7 +87,7 @@
     "student_id":"20042222555",
     "college":"information college",
     "level":"2",
-	"profession":"info manage"
+    "profession":"info manage"
 }
 ```
 
@@ -109,6 +110,7 @@
 **请求URL：**
 
 - `/events?student-id=111`
+- 更符合rest ful规则的应该是/member/111/events
 
 **请求方式：**
 
@@ -119,7 +121,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 |
 | :- | :- | :- | - |
-| student_id | 是 | string | 学号 |
+| student-id | 是 | string | 学号 |
 
 **返回示例**
 
@@ -140,5 +142,50 @@
     ]
 }
 ```
+
+
+
+### 活动成员列表
+
+**简要描述：**
+
+- 获取活动的成员列表
+
+**请求URL：**
+
+- `/members?event-id=111`
+- 更符合rest ful规则的应该是/event/111/members,
+
+**请求方式：**
+
+- GET
+
+**参数：**
+
+
+| 参数名 | 必选 | 类型 | 说明 |
+| :- | :- | :- | - |
+| event-id | 是 | string |   |
+
+**返回示例**
+
+```
+{
+    "code":0,
+    "msg":"",
+    "data":[
+        {
+          "name":"Young Ding",
+          "g_m":"g",
+          "student_id":"20042222555",
+          "college":"information college",
+          "level":"2",
+          "profession":"info manage"
+        }
+    ]
+}
+```
+
+欢迎使用ShowDoc！
 
 欢迎使用ShowDoc！
