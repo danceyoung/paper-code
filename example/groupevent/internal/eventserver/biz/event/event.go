@@ -45,13 +45,22 @@ func NewAEvent(ev EventM) error {
 	return nil
 }
 
-func JoinAEvent(eventId string, name, gm, studentId, college, level, profession string) error {
-	if len(eventId) == 0 || len(studentId) == 0 {
-		return errors.New("params are not enough")
+type MemberM struct {
+	Name       string `json:"name"`
+	Gm         string `json:"g_m"`
+	StudentId  string `json:"student_id"`
+	College    string `json:"college"`
+	Level      string `json:"level"`
+	Profession string `json:"profession"`
+}
+
+func JoinAEvent(eventId string, m MemberM) error {
+	if len(eventId) == 0 || len(m.StudentId) == 0 {
+		return errors.New("join a event: params are not enough")
 	}
-	// if err := data.JoinAEvent(eventId, name, gm, studentId, college, level, profession); err != nil {
-	// 	return errors.New("a error was accurred when join a event")
-	// }
+	if err := data.JoinAEvent(eventId, m.Name, m.Gm, m.StudentId, m.College, m.Level, m.Profession); err != nil {
+		return errors.New("join a event: a error was accurred, " + err.Error())
+	}
 	return nil
 }
 func EventsBy(studentId string) {
