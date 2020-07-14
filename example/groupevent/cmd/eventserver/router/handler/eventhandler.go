@@ -38,6 +38,7 @@ func (eventH *EventHandler) NewAEvent(rw http.ResponseWriter, req *http.Request)
 		panic(err)
 	}
 
+	eventH.responseWith(rw, nil, nil)
 }
 
 func (eventH *EventHandler) JoinAEvent(rw http.ResponseWriter, req *http.Request) {
@@ -59,11 +60,14 @@ func (eventH *EventHandler) JoinAEvent(rw http.ResponseWriter, req *http.Request
 	if err != nil {
 		panic(err)
 	}
+
+	eventH.responseWith(rw, nil, nil)
 }
 
 func (eventH *EventHandler) Events(rw http.ResponseWriter, req *http.Request) {
 	if err := req.ParseForm(); err != nil {
 		panic(err)
 	}
-	event.EventsBy(req.Form.Get("student-id"))
+	events, err := event.EventsBy(req.Form.Get("student-id"))
+	eventH.responseWith(rw, events, err)
 }

@@ -12,5 +12,6 @@ type MemberHandler struct {
 
 func (mh *MemberHandler) Members(rw http.ResponseWriter, req *http.Request) {
 	log.Println(req.ParseForm())
-	member.MembersBy(req.Form.Get("event-id"))
+	members, err := member.MembersBy(req.Form.Get("event-id"))
+	mh.responseWith(rw, members, err)
 }
