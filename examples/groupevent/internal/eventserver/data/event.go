@@ -1,7 +1,7 @@
 package data
 
 import (
-	"paper-code/example/groupevent/internal/pkg/db"
+	"paper-code/examples/groupevent/internal/pkg/db"
 )
 
 const insertaeventsql string = "INSERT INTO events(name,start_date,expired_on,member_count_limit,address,`desc`) VALUES (?,?,?,?,?,?)"

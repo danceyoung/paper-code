@@ -2,8 +2,8 @@ package router
 
 import (
 	"net/http"
-	"paper-code/example/groupevent/cmd/eventserver/router/handler"
-	"paper-code/example/groupevent/pkg/middleware"
+	"paper-code/examples/groupevent/cmd/eventserver/router/handler"
+	"paper-code/examples/groupevent/pkg/middleware"
 )
 
 const prepath string = "/group-event-sericed"

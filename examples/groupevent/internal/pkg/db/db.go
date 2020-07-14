@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	"paper-code/example/groupevent/internal/pkg/cfg"
+	"paper-code/examples/groupevent/internal/pkg/cfg"
 
 	_ "github.com/go-sql-driver/mysql"
 )

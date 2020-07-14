@@ -3,7 +3,7 @@ package member
 import (
 	"errors"
 
-	"paper-code/example/groupevent/internal/eventserver/data"
+	"paper-code/examples/groupevent/internal/eventserver/data"
 )
 
 func MembersBy(eventid string) ([]map[string]string, error) {

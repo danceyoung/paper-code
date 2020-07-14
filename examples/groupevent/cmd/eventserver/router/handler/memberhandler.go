@@ -3,7 +3,7 @@ package handler
 import (
 	"log"
 	"net/http"
-	"paper-code/example/groupevent/internal/eventserver/biz/member"
+	"paper-code/examples/groupevent/internal/eventserver/biz/member"
 )
 
 type MemberHandler struct {

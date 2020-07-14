@@ -2,7 +2,7 @@ package updater
 
 import (
 	"log"
-	"paper-code/example/groupevent/internal/eventtimer"
+	"paper-code/examples/groupevent/internal/eventtimer"
 )
 
 func UpdateEventStatus() {

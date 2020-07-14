@@ -5,7 +5,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
-	"paper-code/example/groupevent/internal/eventserver/biz/event"
+	"paper-code/examples/groupevent/internal/eventserver/biz/event"
 )
 
 // How errors are handled:
