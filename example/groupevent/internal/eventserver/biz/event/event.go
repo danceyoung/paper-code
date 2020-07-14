@@ -2,6 +2,7 @@ package event
 
 import (
 	"errors"
+	"log"
 	"paper-code/example/groupevent/internal/eventserver/data"
 
 	"time"
@@ -63,6 +64,11 @@ func JoinAEvent(eventId string, m MemberM) error {
 	}
 	return nil
 }
-func EventsBy(studentId string) {
-	// data.EventsBy(studentId)
+func EventsBy(studentId string) error {
+	if len(studentId) == 0 {
+		return errors.New("events by: params are not enough")
+	}
+	log.Println(data.EventsBy(studentId))
+
+	return nil
 }
