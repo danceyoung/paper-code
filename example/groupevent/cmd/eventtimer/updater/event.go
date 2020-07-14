@@ -7,5 +7,8 @@ import (
 
 func UpdateEventStatus() {
 	log.Println("updating status of status...")
-	eventtimer.UpdateEventStatus()
+	err := eventtimer.UpdateEventStatus()
+	if err != nil {
+		panic(err)
+	}
 }
