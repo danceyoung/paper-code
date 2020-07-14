@@ -62,5 +62,8 @@ func (eventH *EventHandler) JoinAEvent(rw http.ResponseWriter, req *http.Request
 }
 
 func (eventH *EventHandler) Events(rw http.ResponseWriter, req *http.Request) {
-
+	if err := req.ParseForm(); err != nil {
+		panic(err)
+	}
+	event.EventsBy(req.Form.Get("student-id"))
 }
