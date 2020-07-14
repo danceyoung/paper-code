@@ -41,7 +41,24 @@ func (eventH *EventHandler) NewAEvent(rw http.ResponseWriter, req *http.Request)
 }
 
 func (eventH *EventHandler) JoinAEvent(rw http.ResponseWriter, req *http.Request) {
+	if err := req.ParseForm(); err != nil {
+		panic(err)
+	}
 
+	bodybytes, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		panic(err)
+	}
+	var dest event.MemberM
+	err = json.Unmarshal(bodybytes, &dest)
+	if err != nil {
+		panic(err)
+	}
+
+	err = event.JoinAEvent(req.Form.Get("id"), dest)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func (eventH *EventHandler) Events(rw http.ResponseWriter, req *http.Request) {
