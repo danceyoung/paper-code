@@ -10,6 +10,6 @@ const prepath string = "/group-event-sericed"
 
 func init() {
 	http.Handle(prepath+"/events/new", middleware.HandlerConv(new(handler.EventHandler).NewAEvent))
-	http.Handle(prepath+"/events/new", middleware.HandlerConv(new(handler.EventHandler).JoinAEvent))
-	http.Handle(prepath+"/events/new", middleware.HandlerConv(new(handler.EventHandler).Events))
+	http.Handle(prepath+"/event/join", middleware.HandlerConv(new(handler.EventHandler).JoinAEvent))
+	http.Handle(prepath+"/events", middleware.HandlerConv(new(handler.EventHandler).Events))
 }
