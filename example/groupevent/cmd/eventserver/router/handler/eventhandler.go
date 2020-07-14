@@ -55,7 +55,7 @@ func (eventH *EventHandler) JoinAEvent(rw http.ResponseWriter, req *http.Request
 		panic(err)
 	}
 
-	err = event.JoinAEvent(req.Form.Get("id"), dest)
+	err = event.JoinAEvent(req.Form.Get("event-id"), dest)
 	if err != nil {
 		panic(err)
 	}
