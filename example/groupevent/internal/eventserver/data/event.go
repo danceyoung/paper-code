@@ -1,10 +1,12 @@
 package data
 
-import "paper-code/example/groupevent/internal/pkg/db"
+import (
+	"paper-code/example/groupevent/internal/pkg/db"
+)
 
 const insertaeventsql string = "INSERT INTO events(name,start_date,expired_on,member_count_limit,address,`desc`) VALUES (?,?,?,?,?,?)"
 const insertajoinsql string = `INSERT INTO event_members (event_id, student_name, student_id, g_m, college, level, profession) VALUES (?,?,?,?,?,?,?);`
-const selecteventsbystudentidsql string = "SELECT * FROM event_members where student_id=?"
+const selecteventsbystudentidsql string = "SELECT events.name,events.start_date,events.expired_on,events.member_count_limit,events.address,events.`desc`FROM event_members, events where events.id=event_members.event_id and student_id=?"
 
 func NewAEvent(name, startDate, expiredOn string, countLimit int, address, desc string) error {
 	_, err := db.NewDB().Exec(insertaeventsql, name, startDate, expiredOn, countLimit, address, desc)
@@ -22,12 +24,34 @@ func JoinAEvent(eventId string, name, gm, studentId, college, level, profession 
 	return nil
 }
 
-func EventsBy(studentId string) error {
+func EventsBy(studentId string) ([]map[string]interface{}, error) {
 	rows, err := db.NewDB().Query(selecteventsbystudentidsql, studentId)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer rows.Close()
+	var result []map[string]interface{}
+	for rows.Next() {
+		var (
+			name, address, desc  string
+			startDate, expiredOn string
+			countLimit           int
+		)
+		err = rows.Scan(&name, &startDate, &expiredOn, &countLimit, &address, &desc)
+		if err != nil {
+			return nil, err
+		}
 
-	return nil
+		temp := make(map[string]interface{})
+		temp["name"] = name
+		temp["startDate"] = startDate
+		temp["expiredOn"] = expiredOn
+		temp["countLimit"] = countLimit
+		temp["address"] = address
+		temp["desc"] = desc
+		result = append(result, temp)
+
+	}
+
+	return result, nil
 }
