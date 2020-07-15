@@ -120,23 +120,33 @@ paper-code/examples/groupevent
 
 ```
 1 package main
-2 //
+2
 3 import (
-4	"paper-code/examples/groupevent/internal/eventpopdserver/event"
-5	"paper-code/examples/groupevent/pkg/middleware"
-6 )
-7
-8 func main() {
-9	middleware.HandlerConv(nil)
-10	event.EventsBy("")
-11 }
+4	"paper-code/examples/groupevent/cmd/eventserver/router/handler"
+5	"paper-code/examples/groupevent/cmd/internal"
+6	"paper-code/examples/groupevent/internal/eventpopdserver/event"
+7	"paper-code/examples/groupevent/pkg/middleware"
+8 )
+9
+10 func main() {
+11 	middleware.HandlerConv(nil)
+12
+13	event.EventsBy("")
+14
+15	eh := new(handler.EventHandler)
+16	eh.Events(nil, nil)
+17
+18	internal.CmdInternalFunc()
+19 }
+
 
 此代码为另一个项目导入paper-code/example/groupevent的代码包
-第4行的导入就会提示`use of internal package paper-code/examples/groupevent/internal/eventpopdserver/event not allowed`
+第6行的导入就会提示`use of internal package paper-code/examples/groupevent/internal/eventpopdserver/event not allowed`
+第5行的导入也会提示同样的错误
 第5行导入就可以的，因为导入的pkg代码包
 ```
 
-当然你也不要局限根目录下的`internal`目录，你也可以在任何一个目录中创建`internal`，规则都适用。
+当然你也不要局限根目录下的`internal`目录，你也可以在任何一个目录中创建`internal`，规则都适用。比如上面的例子`第5行的导入也会提示同样的错误:use of internal package paper-code/examples/groupevent/cmd/internal not allowed`
 
 你可以在`internal`文件夹添加其他的架构分层目录来区分可分享、不可分享的代码，比如`internal/myapp`是你项目中某个程序的不可分享的代码；`internal/pkg/`是你项目中的程序都可以分享的代码。也可以添加数据层、业务逻辑层的代码，这个属于在项目中更通用的一个架构分层，和这里的包设计并不冲突，即上层模块可以直接访问下层模块，反之不然。
 
