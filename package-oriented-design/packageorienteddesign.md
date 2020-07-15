@@ -55,7 +55,7 @@
 paper-code/examples/groupevent
 ├── cmd/
 │   └── eventtimer/
-│       ├── update/
+│       └── update/
 │       └── main.go
 │   └── eventserver/
 │       └── router/
@@ -96,14 +96,14 @@ paper-code/examples/groupevent
 
 ```
 ├── cmd/
-│   ├── eventtimer/
-│   │   ├── cmdupdate/
-│   │   ├── cmdquery/
-│   │   └── main.go
+│   └── eventtimer/
+│       └── update/
+│       └── main.go
 │   └── eventserver/
-│       ├── routes/
-│       │   └── handlers/
-│       │   └── router.go
+│       └── router/
+│           └── handler/
+│           └── router.go
+│       └── tests/
 │       └── main.go
 ```
 
