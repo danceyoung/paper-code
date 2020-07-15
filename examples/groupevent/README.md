@@ -14,4 +14,4 @@
 
 ## API文档
 
-[api文件夹下](https://github.com/danceyoung/paper-code/blob/master/example/paper-code/examples/groupevent/api/apidoc.md)
+[api文件夹下](https://github.com/danceyoung/paper-code/blob/master/examples/groupevent/api/apidoc.md)
