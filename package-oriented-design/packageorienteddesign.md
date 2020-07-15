@@ -129,7 +129,7 @@ github.com/servi-io/api
 10	event.EventsBy("")
 11 }
 
-此代码为另一个应用导入本项目的代码包
+此代码为另一个项目导入paper-code/example/groupevent的代码包
 第4行的导入就会提示`use of internal package paper-code/examples/groupevent/internal/eventpopdserver/event not allowed`
 第5行导入就可以的，因为导入的pkg代码包
 ```
