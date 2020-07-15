@@ -1,7 +1,7 @@
 package data
 
 import (
-	"paper-code/examples/groupevent/internal/pkg/db"
+	"groupevent/internal/pkg/db"
 )
 
 const selectmemberssql string = "select student_name, student_id, g_m, college, level, profession from event_members where event_id=?"

@@ -3,9 +3,9 @@ package handler
 import (
 	"encoding/json"
 	"errors"
+	"groupevent/internal/eventserver/biz/event"
 	"io/ioutil"
 	"net/http"
-	"paper-code/examples/groupevent/internal/eventserver/biz/event"
 )
 
 // How errors are handled:
