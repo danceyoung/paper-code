@@ -66,10 +66,10 @@ paper-code/examples/groupevent
 ├── internal/
 │   ├── eventserver/
 │   │   ├── biz/
-│   │   ├── ├──event/
-│   │   ├── ├──member/
+│   │   │   └──event/
+│   │   │   └──member/
 │   │   ├── data/
-│   │   ├── ├──service/
+│   │   │   └──service/
 │   ├── eventpopdserver/
 │   │   ├── event/
 │   │   ├── member/
@@ -78,11 +78,11 @@ paper-code/examples/groupevent
 │       ├── db/
 │       └── log/
 └── vendor/
-    ├── github.com/
-    │   ├── ardanlabs/
-    │   ├── golang/
-    │   ├── prometheus/
-    └── golang.org/
+│   ├── github.com/
+│   │   ├── ardanlabs/
+│   │   ├── golang/
+│   │   ├── prometheus/
+│   └── golang.org/
 ├── go.mod
 ├── go.sum
 ```
