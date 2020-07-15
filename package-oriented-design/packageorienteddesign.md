@@ -12,7 +12,7 @@
 
 内容进行翻译、加工、整合及结合个人的实践经验，并附有一个真实的例子来解释本篇内容。
 
-* [group event](https://github.com/danceyoung/paper-code/tree/master/example/groupevent)
+* [group event](https://github.com/danceyoung/paper-code/tree/master/examples/groupevent)
 
 当然你也可以直接阅读英文原文。
 
