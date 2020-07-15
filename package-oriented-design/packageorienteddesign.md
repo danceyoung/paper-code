@@ -52,30 +52,31 @@
 
 ```
 
-github.com/servi-io/api
+paper-code/examples/groupevent
 ├── cmd/
-│   ├── servi/
-│   │   ├── cmdupdate/
-│   │   ├── cmdquery/
-│   │   └── servi.go
-│   └── servid/
-│       ├── routes/
-│       │   └── handlers/
+│   ├── eventtimer/
+│   │   ├── update/
+│   │   └── main.go
+│   └── eventserver/
+│       ├── router/
+│       │   └── handler/
+│       │   └── router.go
 │       ├── tests/
-│       └── servid.go
+│       └── main.go
 ├── internal/
-│   ├── attachments/
-│   ├── locations/
-│   ├── orders/
-│   │   ├── customers/
-│   │   ├── items/
-│   │   ├── tags/
-│   │   └── orders.go
-│   ├── registrations/
-│   └── platform/
-│       ├── crypto/
-│       ├── mongo/
-│       └── json/
+│   ├── eventserver/
+│   │   ├── biz/
+│   │   ├── ├──event/
+│   │   ├── ├──member/
+│   │   ├── data/
+│   │   ├── ├──service/
+│   ├── eventpopdserver/
+│   │   ├── event/
+│   │   ├── member/
+│   └── pkg/
+│       ├── cfg/
+│       ├── db/
+│       └── log/
 └── vendor/
     ├── github.com/
     │   ├── ardanlabs/
