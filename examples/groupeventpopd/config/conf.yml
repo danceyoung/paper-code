@@ -1,6 +1,0 @@
-dev:
-  mysql: root:root@tcp(127.0.0.1:3306)/group_event?charset=utf8
-test:
-  mysql: root:root@tcp(127.0.0.1:3306)/group_event?charset=utf8
-prod:
-  mysql: root:root@tcp(127.0.0.1:3306)/group_event?charset=utf8

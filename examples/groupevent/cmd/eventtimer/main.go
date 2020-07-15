@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"groupevent/cmd/eventtimer/updater"
 	"log"
+	"paper-code/examples/groupevent/cmd/eventtimer/updater"
 	"time"
 )
 

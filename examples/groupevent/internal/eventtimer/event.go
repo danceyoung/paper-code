@@ -1,8 +1,8 @@
 package eventtimer
 
 import (
-	"groupevent/internal/pkg/db"
 	"log"
+	"paper-code/examples/groupevent/internal/pkg/db"
 )
 
 const updateeventsstatussql string = `UPDATE events 

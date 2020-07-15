@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"groupevent/internal/eventserver/biz/member"
 	"log"
 	"net/http"
+	"paper-code/examples/groupevent/internal/eventserver/biz/member"
 )
 
 type MemberHandler struct {

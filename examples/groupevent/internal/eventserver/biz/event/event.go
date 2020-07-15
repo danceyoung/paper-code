@@ -2,7 +2,7 @@ package event
 
 import (
 	"errors"
-	"groupevent/internal/eventserver/data"
+	"paper-code/examples/groupevent/internal/eventserver/data"
 
 	"time"
 )

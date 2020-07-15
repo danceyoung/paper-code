@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "groupevent/cmd/eventserver/router"
-	_ "groupevent/internal/pkg/cfg"
 	"log"
 	"net/http"
+	_ "paper-code/examples/groupevent/cmd/eventserver/router"
+	_ "paper-code/examples/groupevent/internal/pkg/cfg"
 )
 
 func main() {

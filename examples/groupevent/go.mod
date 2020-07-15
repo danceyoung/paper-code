@@ -1,4 +1,4 @@
-module groupevent
+module paper-code/examples/groupevent
 
 go 1.14
 
