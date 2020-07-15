@@ -54,28 +54,28 @@
 
 paper-code/examples/groupevent
 ├── cmd/
-│   ├── eventtimer/
-│   │   ├── update/
-│   │   └── main.go
+│   └── eventtimer/
+│       ├── update/
+│       └── main.go
 │   └── eventserver/
-│       ├── router/
-│       │   └── handler/
-│       │   └── router.go
-│       ├── tests/
+│       └── router/
+│           └── handler/
+│           └── router.go
+│       └── tests/
 │       └── main.go
 ├── internal/
-│   ├── eventserver/
-│   │   ├── biz/
-│   │   │   └──event/
-│   │   │   └──member/
-│   │   ├── data/
-│   │   │   └──service/
-│   ├── eventpopdserver/
-│   │   ├── event/
-│   │   ├── member/
+│   └── eventserver/
+│       └── biz/
+│           └── event/
+│           └── member/
+│       └── data/
+│           └── service/
+│   └── eventpopdserver/
+│       └── event/
+│       └── member/
 │   └── pkg/
-│       ├── cfg/
-│       ├── db/
+│       └── cfg/
+│       └── db/
 │       └── log/
 └── vendor/
 │   ├── github.com/
