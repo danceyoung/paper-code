@@ -83,7 +83,8 @@ paper-code/examples/groupevent
     │   ├── golang/
     │   ├── prometheus/
     └── golang.org/
-
+├── go.mod
+├── go.sum
 ```
 
 #### cmd/
