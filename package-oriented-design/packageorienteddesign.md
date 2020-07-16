@@ -216,7 +216,7 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
   > eventpopdserver下的event, member是按照功能职责进行的设计，2者不能互相导入。
   >
 
-  > 架构大致上分2种，一个就是通用分层（service, presenter, business, data ...）的架构分层，另一种就是按照功能职责进行分层，go倾向于后者。
+  > 架构大致上分2种，一个就是通用分层（presenter, service, business, data ...）的架构分层，另一种就是按照功能职责进行分层，go倾向于后者。
   >
 * 如果真有上面的需求
 
