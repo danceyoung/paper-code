@@ -149,8 +149,6 @@ paper-code/examples/groupevent
 
 > 第7行导入就可以的，因为导入的pkg代码包
 
-
-
 当然你也不要局限根目录下的`internal`目录，你也可以在任何一个目录中创建`internal`，规则都适用。比如上面的例子`第5行的导入也会提示同样的错误:use of internal package paper-code/examples/groupevent/cmd/internal not allowed`
 
 你可以在`internal`文件夹添加其他的架构分层目录来区分可分享、不可分享的代码，比如`internal/myapp`是你项目中某个程序的不可分享的代码；`internal/pkg/`是你项目中的程序都可以分享的代码。也可以添加数据层、业务逻辑层的代码，这个属于在项目中更通用的一个架构分层，和这里的包设计并不冲突，即上层模块可以直接访问下层模块，反之不然。
@@ -260,13 +258,13 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 
 * `cmd/`
 
-  允许使用第三方的测试包。
-  可以独立创建一个test包来管理单元测试的文件。
+  允许使用第三方的测试包。<br/>
+  可以独立创建一个test包来管理单元测试的文件。<br/>
   这里更多是集成测试而不是单元测试。
 * `kit/`, `internal/`, `internal/pkg/,pkg/`
 
-  强烈推荐使用golang的testing包。
-  test文件可以直接创建在对应包下面。
+  强烈推荐使用golang的testing包。<br/>
+  test文件可以直接创建在对应包下面。<br/>
   这里更多是单元测试而不是集成测试。
 
 ### 捕获错误
