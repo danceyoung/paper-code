@@ -139,12 +139,17 @@ paper-code/examples/groupevent
 18	internal.CmdInternalFunc()
 19 }
 
-
-此代码为另一个项目导入paper-code/example/groupevent的代码包
-第6行的导入就会提示`use of internal package paper-code/examples/groupevent/internal/eventpopdserver/event not allowed`
-第5行的导入也会提示同样的错误
-第5行导入就可以的，因为导入的pkg代码包
 ```
+
+> 此代码片段为另一个项目导入paper-code/example/groupevent的代码包
+
+> 第6行的导入就会提示`use of internal package paper-code/examples/groupevent/internal/eventpopdserver/event not allowed`
+
+> 第5行的导入也会提示同样的错误
+
+> 第7行导入就可以的，因为导入的pkg代码包
+
+
 
 当然你也不要局限根目录下的`internal`目录，你也可以在任何一个目录中创建`internal`，规则都适用。比如上面的例子`第5行的导入也会提示同样的错误:use of internal package paper-code/examples/groupevent/cmd/internal not allowed`
 
@@ -186,7 +191,6 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 
 * 根据业务合理设计包的粒度。
 * 在一个包中导入另一个包中的类型，是不合适的。
-
   go源码里面的网络方面的`Request, Response, Header`等都在`http`包下面
 
   go的设计本身不建议建一个model模块，里面全是一个个结构体。因为这样设计，让其他人看代码，可能不知道这些结构体在哪被使用，修改了结构体，也不知道影响面有多大。
