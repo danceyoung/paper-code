@@ -302,3 +302,5 @@ vendor文件夹包含了所有依赖的三方的源代码，它是go项目最早
 * 最后再试着让它运行得更快-按照性能提升的需求来重构代码。
 
 谢谢
+
+最后推荐一个工具，几秒内快速创建一个符合本文论述的一个go项目 [goslayer](https://github.com/danceyoung/goslayer)
