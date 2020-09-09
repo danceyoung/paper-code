@@ -4,6 +4,6 @@
 
 ## 目录
 
-[Go 面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
-
 [Go 包的规范](https://github.com/danceyoung/paper-code/blob/master/package-style-guideline/packagestyleguideline.md)
+
+[Go 面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
