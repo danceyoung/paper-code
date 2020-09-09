@@ -4,4 +4,4 @@
 
 ## 目录
 
-[面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
+[Go 面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
