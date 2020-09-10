@@ -1,4 +1,4 @@
-# Go 包的规范
+# Go 包的命名和组织
 
 原文：https://rakyll.org/style-packages/
 
@@ -41,3 +41,31 @@ type Header struct {...}
 ```
 
 另外注意到`Header`的结构体在`header.go`文件的最上面，golang本身并没有强性要求这样做，但把基础的核心的类型放在对应文件的最上面，是一个很好的做法。
+
+### 按照功能职责设计
+
+在golang中是按照功能职责设计的，即每个包都要有一定的真实业务含义。
+
+但在其他语言中会把类型统一放在`model`包中，甚至只有类型的定义，这样我们很难找到某个类型是在哪里、哪些文件中被使用，且一旦修改了某个类型，我们不知道影响的范围。
+
+所以在golang中我们不会如下这样设计的
+
+```
+package models // DON'T DO IT!!!
+
+// User represents a user in the system.
+type User struct {...}
+```
+
+在该示例中，我们应该把`User`声明在他被使用的包中，像下面这样
+
+```
+package mngtservice
+
+// User represents a user in the system.
+type User struct {...}
+
+func UsersByQuery(ctx context.Context, q *Query) ([]*User, *Iterator, error)
+
+func UserIDByEmail(ctx context.Context, email string) (int64, error)
+```
