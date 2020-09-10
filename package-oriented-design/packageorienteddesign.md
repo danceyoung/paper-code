@@ -151,6 +151,8 @@ paper-code/examples/groupevent
 
 当然你也不要局限根目录下的`internal`目录，你也可以在任何一个目录中创建`internal`，规则都适用。比如上面的例子`第5行的导入也会提示同样的错误:use of internal package paper-code/examples/groupevent/cmd/internal not allowed`
 
+另外在同一个项目中，`internal`包的导入规则是：`.../a/b/c/internal/d/e/f` 仅仅可以被`.../a/b/c`下的目录导入，`.../a/b/g`则不允许。
+
 你可以在`internal`文件夹添加其他的架构分层目录来区分可分享、不可分享的代码，比如`internal/myapp`是你项目中某个程序的不可分享的代码；`internal/pkg/`是你项目中的程序都可以分享的代码。也可以添加数据层、业务逻辑层的代码，这个属于在项目中更通用的一个架构分层，和这里的包设计并不冲突，即上层模块可以直接访问下层模块，反之不然。
 
 #### internal/pkg/
