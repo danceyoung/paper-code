@@ -85,3 +85,8 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 ## 包的命名
 
 包的名称和导入路径是你包的重要标识，并且它代表了你的包包含的所有东西。所以包的命名一定要“见文识意“，因为这样不仅提高了代码的质量，也为你的用户提高了代码的可读性。
+
+
+
+
+coming soon...
