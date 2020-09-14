@@ -86,7 +86,11 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 
 包的名称和导入路径是你包的重要标识，并且它代表了你的包包含的所有东西。所以包的命名一定要“见文识意“，因为这样不仅提高了代码的质量，也为你的用户提高了代码的可读性。
 
+### 名称要小写
 
+包的名称应该要小写，不要用下划线your_package或驼峰yourPackage的命名样式。更详细的介绍可以参考[官方博客](https://blog.golang.org/package-names)，专门介绍包的命名规则。
+
+### 精简、见文识意
 
 
 coming soon...
