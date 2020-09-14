@@ -4,6 +4,6 @@
 
 ## 目录
 
-[Go 包的命名和组织](https://github.com/danceyoung/paper-code/blob/master/package-style-guideline/packagestyleguideline.md)
+[Go 包的组织和命名](https://github.com/danceyoung/paper-code/blob/master/package-style-guideline/packagestyleguideline.md)
 
 [Go 面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)

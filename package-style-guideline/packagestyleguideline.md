@@ -1,4 +1,4 @@
-# Go 包的命名和组织
+# Go 包的组织和命名
 
 原文：https://rakyll.org/style-packages/
 
