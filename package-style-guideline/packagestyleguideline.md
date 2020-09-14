@@ -116,4 +116,16 @@ import "pkgs.org/common" // DON'T!!!
 package httputils  // DON'T DO IT, USE SINGULAR FORM!!
 ```
 
+### 重命名引用包
+
+如果你引用了好几个包，但是刚好包名却一样，这时为了让代码有更好的阅读性，你需要对某些包进行重命名，避免混淆。命名的规范可以参考本文介绍的规范，至于你要重命名哪些包，根据你自己的情况。但建议，比如你要重命名go标准包，加一个前缀表示这是来自go的标准包，`gourl`,`goioutil`.
+
+```
+import (
+    gourl "net/url"
+
+    "myother.com/url"
+)
+```
+
 coming soon...
