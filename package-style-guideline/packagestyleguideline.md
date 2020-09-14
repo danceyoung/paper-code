@@ -90,7 +90,19 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 
 包的名称应该要小写，不要用下划线your_package或驼峰yourPackage的命名样式。更详细的介绍可以参考[官方博客](https://blog.golang.org/package-names)，专门介绍包的命名规则。
 
-### 精简、见文识意
+### 精、简、短、见文识意
+
+包名应该精简短，且名称有唯一性并能见文识意。就是你的用户能从包名里看出包的代码逻辑和使用意图。
+
+避免一个泛泛的名称，比如`common`,`utils`.
+
+```
+import "pkgs.org/common" // DON'T!!!
+```
+
+避免命名重复，避免用户引用里同一个名称的包，但却是2个不同的包，这样容易产生混淆。
+
+如果你起不好一个名称，有可能从业务需求、整个架构或代码的组织层面就出现了问题。
 
 
 coming soon...
