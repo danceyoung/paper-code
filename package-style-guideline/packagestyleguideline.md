@@ -127,5 +127,3 @@ import (
     "myother.com/url"
 )
 ```
-
-coming soon...
