@@ -80,4 +80,8 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 
 一个标识符可以被导出（首字母大写），以允许其他包应用他。
 
-`main`包不允许其他包导入，所以在`main`包导出标识符，没有任何意义。也有些例外，就是`main`包将要被构建入a .so, or a .a or Go plugin.
+但是`main`包不允许其他包导入，所以在`main`包导出标识符，没有任何意义。也有些例外，就是`main`包将要被构建入a .so, or a .a or Go plugin.
+
+## 包的命名
+
+包的名称和导入路径是你包的重要标识，并且它代表了你的包包含的所有东西。所以包的命名一定要“见文识意“，因为这样不仅提高了代码的质量，也为你的用户提高了代码的可读性。
