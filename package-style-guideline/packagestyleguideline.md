@@ -110,7 +110,7 @@ import "pkgs.org/common" // DON'T!!!
 
 ### 避免复数名称
 
-在golang中，尽量避免以复数的形式命名，虽然go内置的包也有复数形式（`strings`, `errors`)。这样的规范会让其他开发语言的程序员感到很奇怪，但这就是go的设计哲学。比如不能命名`httputils`,而要命名为`httputils`
+在golang中，尽量避免以复数的形式命名，虽然go内置的包也有复数形式（`strings`, `errors`)。这样的规范会让其他开发语言的程序员感到很奇怪，但这就是go的设计哲学。比如不能命名为`httputils`,而要命名为`httputil`
 
 ```
 package httputils  // DON'T DO IT, USE SINGULAR FORM!!
