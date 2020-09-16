@@ -6,7 +6,7 @@ https://cult.honeypot.io/reads/become-a-polyglot-developer/
 
 https://www.businessinsider.com/the-top-coding-languages-with-the-highest-salary-2020-4
 
-“我是一个objective-c程序员，不用swift, react native同样很好的解决问题“
+“我是一个objective-c程序员，不用swift, react native同样很好，很方便地解决问题“
 
 “我喜欢Java，接受不了javascript等脚本语言“
 
@@ -14,7 +14,7 @@ https://www.businessinsider.com/the-top-coding-languages-with-the-highest-salary
 
 ...
 
-我们有时在交流技术的时候，时不时能听到这样的声音。因为现在的技术太多了，我们能很自由地选择喜欢的语言，不去接触其他语言。
+我们有时在交流技术的时候，时不时能听到这样的声音，其实也没什么毛病。因为现在的技术太多了，我们能很自由地选择喜欢的语言，不去接触其他语言。
 
 但是目前的趋势和数据证明，架构师、全栈或具备更多技术的程序员更具有优势，只掌握一门技术的程序员不再具备更多优势，除非你是真正的这门技术专家，然而真正的技术专家能有几个，都是万里挑一。再者就是因为我们写的更多代码是业务代码，基本是代码的搬运工，虽然也不好搬运。当然你同时又具备深度性，那绝对更能把代码写得更整洁、扩展性、可读性等。
 
