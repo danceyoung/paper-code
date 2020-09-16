@@ -8,4 +8,4 @@
 
 [Go 面向包的设计及架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
 
-[为什么程序员要有技术的广度性](https://)
+[为什么程序员要有技术的广度性](https://github.com/danceyoung/paper-code/blob/master/make-a-full-stack-coder/makeafullstackcoder.md)
