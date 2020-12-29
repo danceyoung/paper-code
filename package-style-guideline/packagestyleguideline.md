@@ -127,5 +127,3 @@ import (
     "myother.com/url"
 )
 ```
-
-https://github.com/danceyoung/paper-code/blob/master/wechatsubscriberqr.png
