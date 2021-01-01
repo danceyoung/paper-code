@@ -1,6 +1,12 @@
 # Go 包的组织和命名
 
-原文：https://rakyll.org/style-packages/
+> https://rakyll.org/style-packages/
+>
+> https://blog.golang.org/package-names
+>
+> 当看了很多不同地方的英文blog，发现知识的思想、原理还是来自官方的英文文档，就如中文搜索出来的知识，最终发现都是来自某篇文章，而某篇文章又是来自官方的内容，说这话的目的，是希望开发者要提高英文水平，不断研读官方的英文文献和不断实践。本篇文章特别对包的命名、组织，基于官方文档进行整理。
+
+
 
 Go和其他语言一样，也涉及到命名和代码的组织。组织良好的代码具有很强的交流性、可读性和易用性，和设计良好的API一样重要。当其他用户阅读你代码的时候，包的位置、命名和结构分层的设计是他首先接触的东西。
 
@@ -16,7 +22,7 @@ Go和其他语言一样，也涉及到命名和代码的组织。组织良好的
 
 ### 使用多个文件
 
-一个包是包含了很多`.go`文件的路径。你要根据功能逻辑，充分地把代码分在不同的文件中，这样才有更好的可读性。
+你要根据业务功能逻辑，充分地把代码分在不同的文件中，然后再根据整体的上下文放在同一个包中，这样才有更好的可读性。
 
 比如，`http`包就是根据http的不同功能分成不同的对应文件，就像下面所示的四个文件一样。
 
@@ -72,9 +78,7 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 
 ### 提供例子来解释不清晰的引用包
 
-有些情况下，你并不能在一个独立的包中提供所有要使用的类型。比如你想在一个包中实现一个接口，但是这个接口所在的包和你这个包不是同一个包，或者有些类型是在第三方包中，这样就会很不清晰。此时就需要提供例子来说明这些包是怎么一起用的。
-
-如果你的代码中引用来一些不标准的包，通常需要提供一些代码例子来说明一下。例子会提高那些不太容易被发现包的透明度。
+有些情况下，你并不能在一个独立的包中提供所有要使用的类型。比如你想在一个包中实现一个接口，但是这个接口所在的包和你这个包不是同一个包，或者有些类型是在第三方包中，这样就会很不清晰。此时就需要提供例子来说明这些包是怎么一起用的。例子会提高那些不太容易被发现包的透明度。
 
 ### 不要在main包中导出任何标识符
 
@@ -84,46 +88,129 @@ func UserIDByEmail(ctx context.Context, email string) (int64, error)
 
 ## 包的命名
 
-包的名称和导入路径是你包的重要标识，并且它代表了你的包包含的所有东西。所以包的命名一定要“见文识意“，因为这样不仅提高了代码的质量，也为你的用户提高了代码的可读性。
+一个好的包名称，会有很好的可读性，要见文识义，就是使用者能从包名里看出包的代码逻辑和使用意图。因为包的名称表达了包内容的上下文语意，让使用者很容易理解这个包是干什么的及怎么用的。对代码的维护者来说，也更易维护。
 
-### 名称要小写
+### 包应该被命名什么样
 
-包的名称应该要小写，不要用下划线your_package或驼峰yourPackage的命名样式。更详细的介绍可以参考[官方博客](https://blog.golang.org/package-names)，专门介绍包的命名规则。
+包的名称应该要小写，不要用下划线your_package或驼峰yourPackage的命名样式。且应该是一个简短的名词，比如 time，list，http
 
-### 精、简、短、见文识意
+所以在其他编程语言中的命名规范可能就不适合Go了，比如 computeServiceClient，priority_queue这样的
 
-包名应该精简短，且名称有唯一性并能见文识意。就是你的用户能从包名里看出包的代码逻辑和使用意图。
+如果一个单词无法表达包的含义，可以用多个单词，但需要简写每个单词，且简写后的名称对编程人员来说，都是耳闻能详的，如果不能，就不要这样做了。比如 strconv(string conversion)，syscall(system call)，fmt(formatted i/o)
+
+同时也要尽量避免这样的单词，即编程人员经常用到的单词，比如编程人员声明一个Buffer类型的变量buf。
+
+不必担忧包名和其他源码库冲突，唯一性不是必须的，包名仅仅是导入后默认使用的名称。虽然不太容易发生引入不同地方的同一个名称的包名，但如果真发生了冲突，你可以在导入时重命名一下包名，比如下面这样。
+
+```bash
+import (
+  "interview/log"  //自己项目中的log包
+  golog "log"     //为了避免冲突，可以把标准log包起个别名golog
+)
+```
+
+### 包内容的命名
+
+包的名字和包里面内容的名字是耦合的（包括类型、变量、常量、方法、函数等），是被使用者放在一起使用的，所以当你设计包的时候，尽量站在使用者的角度。
+
+#### 避免重复或不清晰
+
+使用者使用某个类型、函数等时，是把包名作为前缀的，比如 http.Server。这里http是包名，Server是类型名，所以没必要把Server命名成HTTPServer。直接使用http.Server更清晰，也不重复的表达。
+
+#### 函数名
+
+通常，如果在包pkg里有一个函数的返回值是pkg.Pkg(*pkg.Pkg)，那么这个函数的名称不应该含有Pkg字样，比如标准包的
+
+```bash
+start := time.Now()                                  // start is a time.Time
+t, err := time.Parse(time.Kitchen, "6:06PM")         // t is a time.Time
+ctx = context.WithTimeout(ctx, 10*time.Millisecond)  // ctx is a context.Context
+ip, ok := userip.FromContext(ctx)                    // ip is a net.IP
+```
+
+包time的函数Now，Parse返回Time类型的值，就不应该写成NowTime, ParseTime,可以比较一下time.Now() 和time.NowTime()，很明显time.Now()更直接、简练。
+
+如果包pkg有一个函数New返回pkg.Pkg，这个函数就是很好很标准的函数名字。
+
+```bash
+q := list.New()  // q is a *list.List
+```
+
+如果包pkg有一个函数返回的是类型T，而不是Pkg，这个函数名应该包含类型T的字样，这样对使用者来说更清晰明了。
+
+```bash
+d, err := time.ParseDuration("10s")  // d is a time.Duration
+elapsed := time.Since(start)         // elapsed is a time.Duration
+ticker := time.NewTicker(d)          // ticker is a *time.Ticker
+timer := time.NewTimer(d)            // timer is a *time.Timer
+```
+
+不要担忧在不同的包里起了相同的类型名称，因为在使用某个类型的时候是需要包名作为前缀的，这样是不太会引起混淆或歧义的，但是也有尽量的避免。就像标准包的不同包里都有Reader类型的，jpeg.Reader, bufio.Reader, csv.Reader.
+
+如果你起不好一个名称，可能你的逻辑边界是不清晰不准确的，你需要重新梳理你的业务需求、整个架构或代码的组织，直到让使用者或代码维护者能更容易理解和维护。
+
+### 不好的包命名及解决方案
+
+不好的命名让使用者很难理解这个包是什么，该怎么使用，同时也让代码维护者难于维护。
 
 避免一个泛泛的名称，比如`common`,`utils`.
 
 ```
-import "pkgs.org/common" // DON'T!!!
+package util
+func NewStringSet(...string) map[string]bool {...}
+func SortStringSet(map[string]bool) []string {...}
 ```
 
-避免命名重复，避免用户引用里同一个名称的包，但却是2个不同的包，这样容易产生混淆。
+使用者使用的时候，是这样的
 
-如果你起不好一个名称，你需要重新梳理你的业务需求、整个架构或代码的组织。
+```bash
+set := util.NewStringSet("c", "a", "b")
+fmt.Println(util.SortStringSet(set))
+```
 
-### 导入路径
+我们应该把这2个函数从util里分离出来单独成一个包，比如strset，这样更能表达这2个函数的意思。
 
-避免将您的自定义存储库的结构暴露给用户。也要符合`GOPATH`约定。 避免在导入路径中包含`src/`，`pkg/`部分。
+```bash
+package strset
+func New(...string) map[string]bool {...}
+func Sort(map[string]bool) []string {...}
+```
 
-### 避免复数名称
+此时使用者使用的时候，是这样的
 
-在golang中，尽量避免以复数的形式命名，虽然go内置的包也有复数形式（`strings`, `errors`)。这样的规范会让其他开发语言的程序员感到很奇怪，但这就是go的设计哲学。比如不能命名为`httputils`,而要命名为`httputil`
+```bash
+set := stringset.New("c", "a", "b")
+fmt.Println(stringset.Sort(set))
+```
+
+是不是很清晰了，然后还可以进一步提高，让代码看起来更简短
+
+```bash
+package strset
+type Set map[string]bool
+func New(...string) Set {...}
+func (s Set) Sort() []string {...}
+```
+
+使用者也更简单了
+
+```bash
+set := stringset.New("c", "a", "b")
+fmt.Println(set.Sort())
+```
+
+**不要把千万逻辑代码归一个包**。 有许多其他编程思想（或有惯性思维）的程序员会把一些逻辑上没相关，但属于某个架构层次的代码放在一块，比如都放在model，interface，api这样的包中。这样一个仅有一个的好处就是你能很快的找到代码的入口，但是这样的写法和上面util包没什么区别，随着代码量的增大，业务逻辑或代码逻辑的边界会越来越混乱，使用者也更难使用。此时需要按照业务的功能指责或纯技术的指责把那些包里的文件分离开来。
+
+**避免复数的形式。** 在golang中，尽量避免以复数的形式命名，虽然go内置的包也有复数形式strings, errors。这样的规范会让其他开发语言的程序员感到很奇怪，但这就是go的设计哲学。比如不能命名为`httputils`,而要命名为`httputil`
 
 ```
 package httputils  // DON'T DO IT, USE SINGULAR FORM!!
 ```
 
-### 重命名引用包
 
-如果你引用了好几个包，但是刚好包名却一样，这时为了让代码有更好的阅读性，你需要对某些包进行重命名，避免混淆。命名的规范可以参考本文介绍的规范，至于你要重命名哪些包，根据你自己的情况。但建议，比如你要重命名go标准包，加一个前缀表示这是来自go的标准包，`gourl`,`goioutil`.
 
-```
-import (
-    gourl "net/url"
 
-    "myother.com/url"
-)
-```
+
+### 导入路径
+
+避免将您的自定义存储库的结构暴露给用户。也要符合`GOPATH`约定。 避免在导入路径中包含`src/`，`pkg/`部分。
